@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Surprise for You! 🌸</title>
+    <style>
+        body {
+            background-color: #fce4ec;
+            overflow: hidden;
+            text-align: center;
+        }
+        .flower {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background-image: url('https://i.imgur.com/OXohm5w.png'); /* Flower Image */
+            background-size: cover;
+        }
+    </style>
+</head>
+<body onclick="startFlowerRain()">
+    <h2>Click Anywhere for a Surprise! 🌸</h2>
+
+    <script>
+        function createFlower() {
+            let flower = document.createElement("div");
+            flower.classList.add("flower");
+            document.body.appendChild(flower);
+
+            let startX = Math.random() * window.innerWidth;
+            let duration = Math.random() * 5 + 5;
+
+            flower.style.left = startX + "px";
+            flower.style.top = "-50px";
+            flower.style.animation = fall ${duration}s linear;
+
+            setTimeout(() => {
+                flower.remove();
+            }, duration * 1000);
+        }
+
+        function startFlowerRain() {
+            setInterval(createFlower, 200);
+        }
+
+        document.styleSheets[0].insertRule(`
+            @keyframes fall {
+                0% { transform: translateY(0); }
+                100% { transform: translateY(100vh); opacity: 0; }
+            }
+        `, 0);
+    </script>
+</body>
+</html>
